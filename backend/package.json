@@ -6,9 +6,11 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.2",
-    "my-sql": "^1.2.15"
+    "my-sql": "^1.2.15",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.16.2"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"

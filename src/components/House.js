@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { useEffect } from 'react';
 
-var url='http://localhost:8081/'
+var url='http://127.0.0.1:8081/'
 const House = () => {
 
     const [house,getHouse]=useState([]);
@@ -29,6 +29,9 @@ const House = () => {
             },
         })
         .then(response => response.json())
+        .then(json=>{
+            getHouse(json)
+        })
         document.getElementById("hid").value  =   '';
         document.getElementById("hno").value   =   '';
         document.getElementById("status").value  =   '';
@@ -44,6 +47,10 @@ const House = () => {
                 Authorization: 'Bearer abcdxyz',
                 'Content-Type': 'application/json',
             },
+        })
+        .then(response => response.json())
+        .then(json=>{
+            getHouse(json)
         })
     }
 
@@ -69,7 +76,6 @@ const House = () => {
             dispHouse(json)
         })
         document.getElementById("dtype").value='';
-
     }
  
     useEffect(()=>{
@@ -83,8 +89,6 @@ const House = () => {
     return (
         <div>
             <h1>House Management</h1>
-            <br></br>
-            <h3>Please Refersh To see The Results For Insert And Delete Houses</h3>
             <br></br>
             <div className="whole">
                 <div className="each">
@@ -106,18 +110,6 @@ const House = () => {
                     <h2>Display By Type</h2>
                     <input type="text" placeholder="House Type" id="dtype"></input><br></br><br></br>
                     <button onClick={dispType}>submit</button> <br></br><br></br>
-                    {/* {disp.map((input,index)=>{
-                        return(
-                        <div className="each">
-                        <div className="each-ele">
-                            <p>ID : {input.houseId} </p>
-                            <p>House No : {input.houseNo} </p>
-                            <p>STATUS : {input.status} </p>
-                            <p>TYPE : {input.type} </p>
-                        </div><br></br><br></br>
-                        <button onClick={()=>{deletes(input.houseId)}}>delete</button>
-                        </div> )
-                    })} */}
                 </div>
 
             </div>
